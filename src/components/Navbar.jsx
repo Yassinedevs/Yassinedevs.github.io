@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react'
-
-const navLinks = [
-  { href: '#skills', label: 'Compétences' },
-  { href: '#experience', label: 'Expérience' },
-  { href: '#education', label: 'Formation' },
-  { href: '#projects', label: 'Projets' },
-  { href: '#contact', label: 'Contact' },
-]
+import { useLanguage } from '../context/LanguageContext'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { lang, toggle, tr } = useLanguage()
+
+  const navLinks = [
+    { href: '#skills', label: tr.nav.skills },
+    { href: '#experience', label: tr.nav.experience },
+    { href: '#education', label: tr.nav.education },
+    { href: '#projects', label: tr.nav.projects },
+    { href: '#contact', label: tr.nav.contact },
+  ]
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20)
@@ -29,7 +31,18 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <a href="#contact" className="btn btn-outline nav-cta">Contact</a>
+        <div className="nav-right">
+          <button
+            className="lang-toggle"
+            onClick={toggle}
+            aria-label="Toggle language"
+          >
+            <span className={lang === 'fr' ? 'lang-active' : ''}>FR</span>
+            <span className="lang-sep">|</span>
+            <span className={lang === 'en' ? 'lang-active' : ''}>EN</span>
+          </button>
+          <a href="#contact" className="btn btn-outline nav-cta">{tr.nav.contact}</a>
+        </div>
         <button
           className="nav-hamburger"
           onClick={() => setMenuOpen(v => !v)}
@@ -47,6 +60,11 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <button className="lang-toggle lang-toggle-mobile" onClick={toggle}>
+            <span className={lang === 'fr' ? 'lang-active' : ''}>FR</span>
+            <span className="lang-sep">|</span>
+            <span className={lang === 'en' ? 'lang-active' : ''}>EN</span>
+          </button>
         </div>
       )}
     </nav>

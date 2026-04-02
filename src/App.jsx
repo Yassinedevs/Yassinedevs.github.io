@@ -6,8 +6,11 @@ import Experience from './components/Experience'
 import Education from './components/Education'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
+import { LanguageProvider, useLanguage } from './context/LanguageContext'
 
-function App() {
+function AppInner() {
+  const { tr } = useLanguage()
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -35,10 +38,16 @@ function App() {
         <Contact />
       </main>
       <footer className="footer">
-        <p>Conçu &amp; développé par <span>Yassine BOUHI</span> — {new Date().getFullYear()}</p>
+        <p>{tr.footer} <span>Yassine BOUHI</span> — {new Date().getFullYear()}</p>
       </footer>
     </>
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppInner />
+    </LanguageProvider>
+  )
+}

@@ -1,13 +1,9 @@
-const stats = [
-  { value: '3', label: 'ans d\'expérience' },
-  { value: '2', label: 'entreprises' },
-  { value: 'Bac +5', label: 'MBA Dev Full-Stack' },
-]
-
-const stackLeft = ['React', 'Angular', 'Vue.js', 'Flutter']
-const stackRight = ['Node.js', 'Symfony', 'Docker', 'PostgreSQL']
+import { useLanguage } from '../context/LanguageContext'
 
 export default function Hero() {
+  const { tr } = useLanguage()
+  const h = tr.hero
+
   return (
     <section id="hero" className="hero-section">
       <div className="hero-bg">
@@ -19,29 +15,24 @@ export default function Hero() {
         <div className="hero-left">
           <div className="hero-badge">
             <span className="badge-dot"></span>
-            Disponible pour de nouvelles opportunités
+            {h.badge}
           </div>
-          <p className="hero-intro">Bonjour, je suis</p>
+          <p className="hero-intro">{h.intro}</p>
           <h1 className="hero-name">
             Yassine <span>BOUHI</span>
           </h1>
-          <h2 className="hero-title">Développeur full-stack &amp; mobile</h2>
-          <p className="hero-desc">
-            Jeune diplômé passionné par le développement full-stack et mobile,
-            j'ai acquis 3 ans d'expérience en TPE, où j'ai mené des projets variés
-            allant d'applications mobiles à des ERP/CRM sur mesure.
-            Mon objectif&nbsp;: continuer à progresser et apporter une réelle valeur ajoutée.
-          </p>
+          <h2 className="hero-title">{h.title}</h2>
+          <p className="hero-desc">{h.desc}</p>
           <div className="hero-actions">
             <a href="#projects" className="btn btn-primary">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                 <polyline points="9 22 9 12 15 12 15 22" />
               </svg>
-              Voir mes projets
+              {h.btn_projects}
             </a>
             <a href="#contact" className="btn btn-outline">
-              Me contacter
+              {h.btn_contact}
             </a>
           </div>
           <div className="hero-socials">
@@ -76,9 +67,9 @@ export default function Hero() {
 
           {/* Stats card */}
           <div className="hero-card hero-stats-card">
-            <p className="hero-card-label">En chiffres</p>
+            <p className="hero-card-label">{h.stats_label}</p>
             <div className="hero-stats">
-              {stats.map((s, i) => (
+              {h.stats.map((s, i) => (
                 <div key={i} className="hero-stat">
                   <span className="hero-stat-value">{s.value}</span>
                   <span className="hero-stat-label">{s.label}</span>
@@ -89,15 +80,15 @@ export default function Hero() {
 
           {/* Stack card */}
           <div className="hero-card hero-stack-card">
-            <p className="hero-card-label">Stack principale</p>
+            <p className="hero-card-label">{h.stack_label}</p>
             <div className="hero-stack-cols">
               <div className="hero-stack-col">
-                {stackLeft.map(t => (
+                {h.stack_left.map(t => (
                   <span key={t} className="hero-stack-tag">{t}</span>
                 ))}
               </div>
               <div className="hero-stack-col">
-                {stackRight.map(t => (
+                {h.stack_right.map(t => (
                   <span key={t} className="hero-stack-tag">{t}</span>
                 ))}
               </div>
@@ -108,13 +99,13 @@ export default function Hero() {
           <div className="hero-card hero-avail-card">
             <div className="hero-avail-row">
               <span className="badge-dot"></span>
-              <span className="hero-avail-text">Disponible — CDI ou freelance</span>
+              <span className="hero-avail-text">{h.avail}</span>
             </div>
             <div className="hero-avail-row hero-avail-sub">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
               </svg>
-              Partout en France · Télétravail ou présentiel
+              {h.avail_sub}
             </div>
           </div>
 

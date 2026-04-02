@@ -1,47 +1,4 @@
-const projects = [
-  {
-    title: 'Application Mobile Flutter',
-    desc: 'Application mobile cross-platform pour iOS et Android avec une UX optimisée, développée en alternance chez iBoo Technologies.',
-    tags: ['Flutter', 'Dart', 'iOS', 'Android'],
-    icon: '◱',
-    color: 'green',
-  },
-  {
-    title: 'ERP / CRM Sur Mesure',
-    desc: "Lead développeur sur un ERP/CRM personnalisé, adapté aux processus métier spécifiques d'une entreprise cliente.",
-    tags: ['Symfony', 'PHP', 'MySQL', 'Docker'],
-    icon: '◧',
-    color: 'orange',
-  },
-  {
-    title: 'Application Web REST API',
-    desc: "Développement et maintenance d'une application web sur mesure intégrant une API REST consommée par les clients.",
-    tags: ['Node.js', 'REST API', 'React', 'PostgreSQL'],
-    icon: '◨',
-    color: 'blue',
-  },
-  {
-    title: 'Back-Office & Administration',
-    desc: "Mise en place de logiciels d'administration et de back-office en collaboration avec l'équipe de développement.",
-    tags: ['React', 'Angular', 'GraphQL', 'CI/CD'],
-    icon: '◩',
-    color: 'purple',
-  },
-  {
-    title: 'E-commerce Prestashop',
-    desc: "Maintenance et amélioration d'un site e-commerce sous Prestashop avec l'ajout de nouvelles fonctionnalités.",
-    tags: ['Prestashop', 'PHP', 'MySQL', 'JavaScript'],
-    icon: '◪',
-    color: 'cyan',
-  },
-  {
-    title: 'Optimisation WordPress',
-    desc: 'Optimisation des performances de sites web WordPress, résolution de problèmes techniques et amélioration du SEO.',
-    tags: ['WordPress', 'PHP', 'NGINX', 'Performance'],
-    icon: '◫',
-    color: 'pink',
-  },
-]
+import { useLanguage } from '../context/LanguageContext'
 
 const ArrowIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -56,16 +13,19 @@ const GithubIcon = () => (
 )
 
 export default function Projects() {
+  const { tr } = useLanguage()
+  const p = tr.projects
+
   return (
     <section id="projects" className="projects-section">
       <div className="container">
         <div className="section-header" data-reveal>
-          <p className="section-label">Projets</p>
-          <h2 className="section-title">Réalisations</h2>
-          <p className="section-desc">Projets développés au cours de mon parcours professionnel</p>
+          <p className="section-label">{p.label}</p>
+          <h2 className="section-title">{p.title}</h2>
+          <p className="section-desc">{p.desc}</p>
         </div>
         <div className="projects-grid">
-          {projects.map((project, i) => (
+          {p.items.map((project, i) => (
             <a
               key={i}
               href="https://github.com/Yassinedevs"
@@ -97,7 +57,7 @@ export default function Projects() {
             className="btn btn-outline"
           >
             <GithubIcon />
-            Voir tous mes projets sur GitHub
+            {p.github_btn}
           </a>
         </div>
       </div>
