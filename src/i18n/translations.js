@@ -11,7 +11,7 @@ export const translations = {
       badge: 'Disponible pour de nouvelles opportunités',
       intro: 'Bonjour, je suis',
       title: 'Développeur full-stack & mobile',
-      desc: "Jeune diplômé passionné par le développement full-stack et mobile, j'ai acquis 3 ans d'expérience en TPE, où j'ai mené des projets variés allant d'applications mobiles à des ERP/CRM sur mesure. Mon objectif\u00a0: continuer à progresser et apporter une réelle valeur ajoutée.",
+      desc: "Développeur full-stack avec 3 ans d’expérience en développement web et mobile. J’ai travaillé sur des applications métier, des ERP/CRM, des API REST et des applications mobiles, de la conception à la maintenance. Habitué à m’adapter à différents environnements techniques, je recherche aujourd’hui des missions de développement full-stack.",
       btn_projects: 'Voir mes projets',
       btn_contact: 'Me contacter',
       stats_label: 'En chiffres',
